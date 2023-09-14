@@ -1,2 +1,115 @@
-﻿body {
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap');
+
+
+body {
+    margin-top: -57px;
+    margin-bottom: 60px;
+    background-color: #F5F5F5;
+    font-family: 'Montserrat', sans-serif;
 }
+
+
+.page-title {
+    color: #4b433f;
+    position: relative;
+    margin-left: 100px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.logo-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-top: 180px;
+    position: fixed;
+    color: #4b433f;
+}
+
+.add-button {
+    background-color: #e9e5df;
+    border: none;
+    color: #4b433f;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 0;
+    position: relative;
+    margin-top: 300px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+
+    .add-button::before {
+        top: 0;
+    }
+
+    .add-button::after {
+        bottom: 0;
+    }
+
+    .add-button:hover {
+        background-color: #efebe7;
+    }
+
+.placeHolder {
+    background-color: #e9e5df;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 50px;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+.logo {
+    margin-left: 50px;
+    margin-right: auto;
+    margin-top: 20px;
+    display: block;
+    position: fixed;
+    width: 150px;
+    height: auto;
+    left: 0;
+    position: fixed;
+}
+
+.search-container {
+    display: flex;
+    justify-content: left;
+    height: 35px;
+    margin-top: 30px;
+    z-index: 2;
+    position: fixed;
+    left: 20px;
+}
+
+.search-bar {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #c3b8b4;
+    border-radius: 20px;
+    position: fixed;
+    left: 300px;
+    height: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: #4b433f;
+}
+
+    .search-bar:focus {
+        border: #7a6e6a;
+    }
