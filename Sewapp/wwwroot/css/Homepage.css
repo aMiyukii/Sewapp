@@ -38,8 +38,8 @@ body {
     margin-top: 300px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-}
 
+}
 
     .add-button::before {
         top: 0;
@@ -113,3 +113,92 @@ body {
     .search-bar:focus {
         border: #7a6e6a;
     }
+
+
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 960px;
+    height: 540px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.upload {
+    width: 350px;
+    height: 166px;
+    background-color: #efebe7;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -420px;
+    margin-left: 60px;
+}
+
+.upload-icon {
+    margin: 0 auto;
+    width: 20%;
+    height: auto;
+    margin-top: 30px;
+}
+
+.upload-text {
+    text-align: center;
+    margin-top: 10px;
+    color: #7a6e6a;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.left-text {
+    text-align: left;
+    margin-left: 60px;
+    margin-top: -170px;
+}
+
+.right-text {
+    text-align: right;
+    margin-right: 64px;
+    margin-top: 30px;
+}
+
+.lower-left-text {
+    text-align: left;
+    margin-left: 60px;
+    margin-bottom: 30px;
+}
