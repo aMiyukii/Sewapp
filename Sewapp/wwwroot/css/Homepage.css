@@ -115,7 +115,6 @@ body {
     }
 
 
-
 .popup-overlay {
     display: none;
     position: fixed;
@@ -164,7 +163,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: -420px;
+    margin-top: -20px;
     margin-left: 60px;
 }
 
@@ -182,23 +181,35 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 14px;
-    margin-top: 10px;
+    margin-top: 0px;
 }
 
-.left-text {
-    text-align: left;
-    margin-left: 60px;
-    margin-top: -170px;
-}
-
-.right-text {
-    text-align: right;
-    margin-right: 64px;
-    margin-top: 30px;
-}
 
 .lower-left-text {
     text-align: left;
     margin-left: 60px;
-    margin-bottom: 30px;
+    margin-bottom: 180px;
+}
+
+.text-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.left-text, .right-text {
+    flex: 1;
+    text-align: center;
+    margin-top: -20px;
+    }
+
+.left-text {
+    text-align: left;
+    margin-left: 64px;
+}
+
+.right-text {
+    text-align: right;
+    margin-right: 164px;
 }
