@@ -22,8 +22,6 @@
     <button class="add-button">Add Pattern</button>
 </div>
 
-
-
 <div class="popup-overlay" id="popup">
     <div class="popup-content">
         <span class="close-button" id="close-popup">&times;</span>
@@ -37,14 +35,31 @@
                 <h5 class="right-text">Categorize pattern</h5>
             </div>
         </div>
+
+        <div class="dropdown-container">
+            <div class="dropdown">
+                <select id="category-dropdown">
+                    <option value="category1">Category 1</option>
+                    <option value="category2">Category 2</option>
+                    <option value="category3">Category 3</option>
+                </select>
+            </div>
+        </div>
+
         <div class="upload">
             <img src="~/Images/upload-icon.png" alt="upload icon" width="40%" height="auto" class="upload-icon">
             <h3 class="upload-text">Drop file to upload or browse</h3>
         </div>
 
-        <h5 class="lower-left-text">Name pattern</h5>
-    </div>
+        
+        <div class="input-container">
+            <h5 class="lower-left-text">Name pattern</h5>
+            <input type="text" id="pattern-name-input" placeholder="Enter pattern name">
+        </div>
+
+        </div>
 </div>
+
 
 
 
