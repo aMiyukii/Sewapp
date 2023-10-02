@@ -67,8 +67,13 @@
 
             <div class="input-container">
                 <h5 class="lower-left-text">Name pattern</h5>
+                <div class="error-message" id="error-message" style="display: none;">
+                    Please enter a name for the pattern.
+                </div>
                 <input type="text" id="pattern-name-input" placeholder="Enter pattern name">
             </div>
+                
+
 
             <div class="add-button-popup">
                 <button type="button">Add</button>
@@ -77,8 +82,6 @@
     </div>
 
 
-    </div>
-    </div>
 
 
 
@@ -93,28 +96,36 @@
             const patternNameInput = document.getElementById('pattern-name-input');
             const categoryDropdown = document.getElementById('category-dropdown');
             const patternContainer = document.getElementById('pattern-container');
+            const errorMessage = document.getElementById('error-message');
 
             addButton.addEventListener('click', function () {
                 popup.style.display = 'block';
+                errorMessage.style.display = 'none';
             });
 
             closeButton.addEventListener('click', function () {
                 popup.style.display = 'none';
+                errorMessage.style.display = 'none';
             });
 
             addButtonPopup.addEventListener('click', function () {
-                popup.style.display = 'none';
-
                 const patternName = patternNameInput.value;
                 const selectedCategory = categoryDropdown.options[categoryDropdown.selectedIndex].text;
 
+                if (patternName.trim() === '') {
+                    errorMessage.style.display = 'block';
+                    return;
+                }
+
+                popup.style.display = 'none';
+
                 const square = document.createElement('div');
-                square.classList.add('pattern-square', 'custom-styles'); // Add custom class for styles
+                square.classList.add('pattern-square', 'custom-styles');
 
                 square.innerHTML = `
-                        <div>${patternName}</div>
-                        <div>${selectedCategory}</div>
-                    `;
+                    <div>${patternName}</div>
+                    <div>${selectedCategory}</div>
+                `;
 
                 patternContainer.appendChild(square);
 
@@ -122,6 +133,7 @@
                 categoryDropdown.value = 'category1';
             });
         });
+
     </script>
 
 </body>

@@ -109,10 +109,6 @@ body {
     color: #4b433f;
 }
 
-    .search-bar:focus {
-        border: #7a6e6a;
-    }
-
 
 .pattern-container {
     display: flex;
@@ -139,7 +135,7 @@ body {
     font-weight: 500;
     color: #7a6e6a;
     margin-right: 80px;
-    margin-bottom: 0px;
+    margin-bottom: 120px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -197,7 +193,13 @@ body {
     right: 10px;
     font-size: 24px;
     cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
 }
+
+    .close-button:hover {
+        color: red;
+    }
 
 .upload {
     width: 350px;
@@ -261,13 +263,19 @@ body {
     margin-right: 130px;
 }
 
+.error-message{
+    font-size: 14px;
+    color: red;
+
+}
+
 .input-container {
     margin-left: 60px;
     border-radius: 10px;
     padding: 10px;
     background-color: #fff;
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #pattern-name-input {
