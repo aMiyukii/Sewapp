@@ -1,3 +1,4 @@
+using MySql.Data.MySqlClient;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,8 +14,25 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+string connectionString = "server=your_server_address;user=your_username;password=your_password;database=your_database_name;";
+MySqlConnection connection = new MySqlConnection(connectionString);
+
+try
+{
+    connection.Open();
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+finally
+{
+    connection.Close();
+}
+
+
 app.UseHttpsRedirection();
-app.UseStaticFiles();
+app.UseStaticFiles();   
 
 app.UseRouting();
 
