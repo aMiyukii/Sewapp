@@ -27,12 +27,14 @@
                     <img src="~/Images/upload-icon.png" alt="upload icon" width="40%" height="auto" class="upload-icon">
                     <h3 class="upload-text">Drop file to upload or <a href="#" id="browse-link">browse</a></h3>
                 </div>
-        <h5 class="Name-pattern">Add pattern name</h5>
-        <h5 class="Category-pattern">Categorize pattern</h5>
-               
-    </div>
 
-            @*<div class="dropdown-container">
+        <h5 class="Name-pattern">Add pattern name</h5>
+            <div class="input-container">
+            <input type="text" id="pattern-name-input" placeholder="Enter pattern name">
+            </div>
+
+        <h5 class="Category-pattern">Categorize pattern</h5>
+            <div class="dropdown-container">
                 <div class="dropdown">
                     <select id="category-dropdown">
                         <option value="" disabled selected>Choose category</option>
@@ -51,20 +53,14 @@
                     </select>
                 </div>
             </div>
+    </div>
 
-            
-
-            <div class="input-container">
-                <h5 class="lower-left-text">Name pattern</h5>
-                <div class="error-message" id="error-message" style="display: none;">
-                    Please enter a name for the pattern.
-                </div>
-                <input type="text" id="pattern-name-input" placeholder="Enter pattern name">
-            </div>
+    <div class="add-button-popup">
+        <button type="button">Add</button>
+    </div>
 
 
 
-            <div class="add-button-popup">
-                <button type="button">Add</button>
-            </div>*@    
+
+
 </body>
