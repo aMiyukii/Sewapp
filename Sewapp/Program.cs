@@ -1,4 +1,5 @@
-using MySql.Data.MySqlClient;
+using Microsoft.Data.SqlClient;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,32 +15,31 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-string connectionString = "server=your_server_address;user=your_username;password=your_password;database=your_database_name;";
-MySqlConnection connection = new MySqlConnection(connectionString);
+// SQL connection
+using (SqlConnection connection = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;Database=master;"))
+{
+    try
+    {
+        connection.Open();
+    }
+    catch (Exception)
+    {
+        throw new InvalidOperationException("Connection not working");
+    }
 
-try
-{
-    connection.Open();
-}
-catch (Exception ex)
-{
-    Console.WriteLine(ex.Message);
-}
-finally
-{
     connection.Close();
 }
 
-
 app.UseHttpsRedirection();
-app.UseStaticFiles();   
-
+app.UseStaticFiles();
 app.UseRouting();
-
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
 
 app.Run();

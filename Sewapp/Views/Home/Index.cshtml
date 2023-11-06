@@ -24,116 +24,19 @@
     <div class="placeHolder">
         <img src="~/Images/logo.png" alt="Logo" width="40%" height="auto" class="logo">
         <h5 class="logo-name">The Sew Library</h5>
-        <button class="add-button">Add Pattern</button>
-    </div>
 
-    <div class="popup-overlay" id="popup">
-        <div class="popup-content">
-            <span class="close-button" id="close-popup">&times;</span>
-            <h5 class="center-text">Add Pattern</h5>
+        @using (Html.BeginForm("AddPatternPage", "Home"))
+        {
+            <button class="add-button">Add Pattern</button>
+        }
 
-            <div class="text-container">
-                <div>
-                    <h5 class="left-text">Upload pattern</h5>
-                </div>
-                <div>
-                    <h5 class="right-text">Categorize pattern</h5>
-                </div>
-            </div>
-
-            <div class="dropdown-container">
-                <div class="dropdown">
-                    <select id="category-dropdown">
-                        <option value="category1">Dresses</option>
-                        <option value="category2">Tops</option>
-                        <option value="category3">Shirts</option>
-                        <option value="category4">Skirts</option>
-                        <option value="category5">Trousers</option>
-                        <option value="category6">Sweaters</option>
-                        <option value="category7">Hoodies</option>
-                        <option value="category8">Blouses</option>
-                        <option value="category9">Jackets</option>
-                        <option value="category10">Shorts</option>
-                        <option value="category11">Accessories</option>
-                        <option value="category12">Miscellaneous</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="upload">
-                <img src="~/Images/upload-icon.png" alt="upload icon" width="40%" height="auto" class="upload-icon">
-                <h3 class="upload-text">Drop file to upload or <a href="#" id="browse-link">browse</a></h3>
-            </div>
-
-            <div class="input-container">
-                <h5 class="lower-left-text">Name pattern</h5>
-                <div class="error-message" id="error-message" style="display: none;">
-                    Please enter a name for the pattern.
-                </div>
-                <input type="text" id="pattern-name-input" placeholder="Enter pattern name">
-            </div>
-                
-
-
-            <div class="add-button-popup">
-                <button type="button">Add</button>
-            </div>
-        </div>
     </div>
 
 
 
 
+  
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const popup = document.getElementById('popup');
-            const addButton = document.querySelector('.add-button');
-            const closeButton = document.getElementById('close-popup');
-            const addButtonPopup = document.querySelector('.add-button-popup button');
-            const fileInput = document.getElementById('file-input');
-            const browseLink = document.getElementById('browse-link');
-            const patternNameInput = document.getElementById('pattern-name-input');
-            const categoryDropdown = document.getElementById('category-dropdown');
-            const patternContainer = document.getElementById('pattern-container');
-            const errorMessage = document.getElementById('error-message');
 
-            addButton.addEventListener('click', function () {
-                popup.style.display = 'block';
-                errorMessage.style.display = 'none';
-            });
-
-            closeButton.addEventListener('click', function () {
-                popup.style.display = 'none';
-                errorMessage.style.display = 'none';
-            });
-
-            addButtonPopup.addEventListener('click', function () {
-                const patternName = patternNameInput.value;
-                const selectedCategory = categoryDropdown.options[categoryDropdown.selectedIndex].text;
-
-                if (patternName.trim() === '') {
-                    errorMessage.style.display = 'block';
-                    return;
-                }
-
-                popup.style.display = 'none';
-
-                const square = document.createElement('div');
-                square.classList.add('pattern-square', 'custom-styles');
-
-                square.innerHTML = `
-                    <div>${patternName}</div>
-                    <div>${selectedCategory}</div>
-                `;
-
-                patternContainer.appendChild(square);
-
-                patternNameInput.value = '';
-                categoryDropdown.value = 'category1';
-            });
-        });
-
-    </script>
 
 </body>

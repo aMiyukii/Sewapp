@@ -18,9 +18,9 @@ namespace Sewapp.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult AddPatternPage()
         {
-            return View();
+            return View("AddPatternPage");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
