@@ -23,10 +23,13 @@
 
     <div class="add-pattern-content">
         <h5 class="upload-pattern-text">Upload pattern</h5>
-                <div class="upload">
-                    <img src="~/Images/upload-icon.png" alt="upload icon" width="40%" height="auto" class="upload-icon">
-                    <h3 class="upload-text">Drop file to upload or <a href="#" id="browse-link">browse</a></h3>
-                </div>
+        <div class="upload">
+            <img src="~/Images/upload-icon.png" alt="upload icon" width="40%" height="auto" class="upload-icon">
+            <input type="file" id="file-input" style="display: none;" onchange="handleFileSelect(this)">
+            <a href="#" id="browse-link" onclick="openFileInput()">Click here to browse a file to upload.</a>
+            <div id="selected-file-name" style="margin-top: 10px;"></div>
+        </div>
+
 
         <h5 class="Name-pattern">Add pattern name</h5>
             <div class="input-container">
@@ -60,6 +63,26 @@
     </div>
 
 
+
+    <script>
+        function openFileInput() {
+            document.getElementById('file-input').click();
+        }
+
+        function handleFileSelect(input) {
+            const selectedFile = input.files[0];
+
+            if (selectedFile) {
+                if (selectedFile.type === 'application/pdf' || selectedFile.name.toLowerCase().endsWith('.pdf')) {
+                    const fileName = selectedFile.name;
+                    document.getElementById('selected-file-name').innerText = `Selected file: ${fileName}`;
+                } else {
+                    document.getElementById('selected-file-name').innerText = 'Please select a PDF file.';
+                    input.value = null;
+                }
+            }
+        }
+    </script>
 
 
 
