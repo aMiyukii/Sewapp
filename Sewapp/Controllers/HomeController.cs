@@ -23,14 +23,5 @@ namespace Sewapp.Controllers
             return View("AddPatternPage");
         }
 
-        public IActionResult Error()
-        {
-            var viewModel = new CustomErrorViewModel
-            {
-                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
-            };
-
-            return View(viewModel);
-        }
     }
 }
