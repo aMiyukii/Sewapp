@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Sewapp.Core;
 using Sewapp.Models;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -12,7 +14,16 @@ namespace Sewapp.Controllers
             return View();
         }
 
-        
-        //database connectie hier
+        public void Create()
+        {
+
+        }
+
+        [HttpPost]
+        public IActionResult AddPattern(Pattern pattern)
+        {
+            Console.WriteLine($"Patter" + pattern);
+            return View("Index");
+        }
     }
 }
