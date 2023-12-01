@@ -9,34 +9,41 @@ using System.Threading.Tasks;
 namespace Sewapp.Controllers
 {
     public class PatternController : Controller
-	    {
-        PatternService patternService = new PatternService();
+    {
+        private readonly PatternService patternService;
 
+        public PatternController(PatternService patternService)
+        {
+            this.patternService = patternService;
+        }
 
-            public IActionResult Index()
-            {
-                return View();
-            }
+        public IActionResult Index()
+        {
+            var patterns = patternService.GetPatterns();
+            return View(patterns);
+        }
 
-        
         public IActionResult AddPatternForm()
         {
-            
             return View();
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult AddPatternName(Pattern pattern)
         {
-            //Console.WriteLine($"Pattern Name: {pattern.Name}");
+            if (ModelState.IsValid)
+            {
+                patternService.AddPattern(pattern);
 
-            //patternService.AddPattern(pattern);
+                ViewBag.PatternName = pattern.Name;
 
-            ViewBag.PatternName = pattern.Name;
-
-            return View("Index");
+                return View("Index");
+            }
+            else
+            {
+                return View("YourFormView", pattern);
+            }
         }
     }
-
 }
-
