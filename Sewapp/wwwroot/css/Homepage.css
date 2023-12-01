@@ -111,6 +111,11 @@ body {
     color: #4b433f;
 }
 
+.Pattern-Information {
+    margin-top: 150px;
+}
+
+
 /*Patterns*/
 /*.pattern-container {
     display: flex;
