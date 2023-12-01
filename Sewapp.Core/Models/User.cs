@@ -1,4 +1,4 @@
-﻿namespace Sewapp.Core
+﻿namespace Sewapp.Core.Models
 {
     public class User
     {

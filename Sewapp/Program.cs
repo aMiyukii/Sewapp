@@ -16,19 +16,19 @@ if (!app.Environment.IsDevelopment())
 }
 
 // SQL connection
-using (SqlConnection connection = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;Database=master;"))
-{
-    try
-    {
-        connection.Open();
-    }
-    catch (Exception)
-    {
-        throw new InvalidOperationException("Connection not working");
-    }
+//using (SqlConnection connection = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;Database=master;"))
+//{
+//    try
+//    {
+//        connection.Open();
+//    }
+//    catch (Exception)
+//    {
+//        throw new InvalidOperationException("Connection not working");
+//    }
 
-    connection.Close();
-}
+//    connection.Close();
+//}
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -39,7 +39,7 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
         name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
+        pattern: "{controller=Pattern}/{action=Index}/{id?}");
 });
 
 app.Run();

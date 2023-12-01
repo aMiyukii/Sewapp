@@ -1,6 +1,6 @@
 ﻿using Sewapp.Core;
 
-namespace Sewapp.Data;
+namespace Sewapp.Core.Dto;
 
 public class PatternDTO
 {

@@ -1,6 +1,5 @@
-﻿using Google.Protobuf.WellKnownTypes;
-
-namespace Sewapp.Core
+﻿
+namespace Sewapp.Core.Models
 {
     public class Category
     {

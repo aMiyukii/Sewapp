@@ -1,8 +1,9 @@
-﻿using Sewapp.Data;
+﻿using Sewapp.Core.Dto;
+using Sewapp.Core.Models;
 
-namespace Sewapp.Core
+namespace Sewapp.Core.Services
 {
-    public class Add_Pattern
+    public class PatternService
     {
         public PatternDTO SavePattern(Pattern newPattern)
         {

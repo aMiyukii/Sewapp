@@ -1,4 +1,4 @@
-﻿namespace Sewapp.Core
+﻿namespace Sewapp.Core.Models
 {
     public class Pattern
     {
@@ -6,8 +6,8 @@
         public string Name { get; set; }
         public List<Category> Category { get; set; }
 
-        public Pattern() 
-        { 
+        public Pattern()
+        {
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Sewapp.Data;
+﻿namespace Sewapp.Core.Dto;
 
 public class CategoryDTO
 {

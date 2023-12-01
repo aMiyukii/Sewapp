@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\AddPattern\**" />
+    <Content Remove="Views\AddPattern\**" />
+    <EmbeddedResource Remove="Views\AddPattern\**" />
+    <None Remove="Views\AddPattern\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\Images\" />
     <Folder Include="wwwroot\NewFolder\" />
   </ItemGroup>
@@ -15,6 +22,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="7.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.13" />
     <PackageReference Include="MySql.Data" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sewapp.Core\Sewapp.Core.csproj" />
   </ItemGroup>
 
 </Project>

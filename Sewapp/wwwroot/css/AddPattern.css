@@ -40,6 +40,8 @@ body {
     margin-top: 300px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
+    padding-left: 90px;
+
 }
 
 .return-button::before {
@@ -148,11 +150,10 @@ body {
 }
 
 
-
 .Category-pattern {
     text-align: right;
     margin-right: 300px;
-    margin-top: -345px;
+    margin-top: -370px;
 }
 
 
@@ -188,21 +189,21 @@ body {
         color: #7a6e6a;
     }
 
-.add-button-popup {
-    background-color: #efebe7;
+.add-pattern-button {
+    background-color: #EFEBE7;
     border-radius: 5px;
     padding: 10px;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     width: 150px;
     outline: none;
-    margin-top: 400px;
-    margin-left: auto;
+    margin-top: 0px;
+    margin-left: 50%;
     margin-right: auto;
 }
 
-    .add-button-popup button {
-        background: none;
+    .add-pattern-button button {
+        background: #EFEBE7;
         border: none;
         padding: 0;
         font-size: 16px;
