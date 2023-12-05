@@ -8,15 +8,15 @@ namespace Sewapp.Core.Services
     {
         public void AddPattern(Pattern newPattern)
         {
-            PatternData patternData = new PatternData(newPattern.Name);
-            patternData.SendPatternToDatabase();
+            PatternRepository patternRepository = new PatternRepository(newPattern.Name);
+            patternRepository.SendPatternToDatabase();
         }
 
         public List<Pattern> GetAllPatterns()
         {
             List<Pattern> patterns = new List<Pattern>();
 
-            List<PatternData> patternDataList = PatternData.GetAllPatternsFromDatabase();
+            List<PatternRepository> patternDataList = PatternRepository.GetAllPatternsFromDatabase();
 
             foreach (var patternData in patternDataList)
             {

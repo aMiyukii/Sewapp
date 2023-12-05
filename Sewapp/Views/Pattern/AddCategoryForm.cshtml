@@ -1,0 +1,35 @@
+﻿@using Sewapp.Core.Models
+@model Sewapp.Core.Models.Category
+@{
+    ViewData["Title"] = "Add Category";
+}
+
+<head>
+    <link rel="stylesheet" href="/css/AddCategory.css">
+</head>
+
+<body>
+    <div class="text-center">
+        <h1 class="page-title">Add Category</h1>
+    </div>
+
+    <div class="placeHolder">
+        <img src="~/Images/logo.png" alt="Logo" width="40%" height="auto" class="logo">
+        <h5 class="logo-name">The Sew Library</h5>
+        <a class="return-button" asp-action="Index" asp-controller="Pattern">Return</a>
+      
+    </div>
+
+    @using (Html.BeginForm("AddCategory", "Pattern", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <h5 class="Name-category">Add category name</h5>
+        <div class="input-container">
+            @Html.TextBoxFor(model => model.Name, new { id = "AddCategoryName", placeholder = "Enter category name" })
+        </div>
+
+        <button type="submit" class="add-category-button">Add category</button>
+    }
+    
+</body>

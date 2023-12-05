@@ -52,6 +52,33 @@ body {
     .add-button:hover {
         background-color: #efebe7;
     }
+    
+    .category-button {
+    background-color: #e9e5df;
+    border: none;
+    color: #4b433f;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 0;
+    position: relative;
+    margin-top: 300px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+        .category-button::before {
+            top: 0;
+        }
+
+        .category-button::after {
+            bottom: 0;
+        }
+
+        .category-button:hover {
+            background-color: #efebe7;
+        }
 
 .placeHolder {
     background-color: #e9e5df;
@@ -113,7 +140,7 @@ body {
 
 
 .Pattern-List {
-    margin-top: 250px;
+    margin-top: 150px;
 }
 
 

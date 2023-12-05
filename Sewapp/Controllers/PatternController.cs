@@ -10,9 +10,6 @@ namespace Sewapp.Controllers
 {
     public class PatternController : Controller
     {
-
-        private readonly PatternService patternService;
-
         public PatternController()
         {
             patternService = new PatternService();
@@ -29,6 +26,9 @@ namespace Sewapp.Controllers
             return View();
         }
 
+
+        private readonly PatternService patternService;
+
         [HttpPost]
         public IActionResult AddPatternName(Pattern pattern)
         {
@@ -37,6 +37,26 @@ namespace Sewapp.Controllers
             ViewBag.PatternName = pattern.Name;
             return RedirectToAction("Index");
         }
+
+        public IActionResult AddCategoryForm()
+        {
+            return View();
+        }
+
+        private readonly CategoryService categoryService;
+
+        [HttpPost]
+        public IActionResult AddCategory(Category category)
+        {
+            Console.WriteLine($"Category Name: {category.Name}");
+
+            // Use the instance of CategoryService to call AddCategory
+            categoryService.AddCategory(category);
+
+            ViewBag.PatternName = category.Name;
+            return RedirectToAction("Index");
+        }
+
 
     }
 }
