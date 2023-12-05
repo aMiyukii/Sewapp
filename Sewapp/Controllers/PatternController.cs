@@ -10,17 +10,10 @@ namespace Sewapp.Controllers
 {
     public class PatternController : Controller
     {
-        private readonly PatternService patternService;
-
-        public PatternController(PatternService patternService)
-        {
-            this.patternService = patternService;
-        }
 
         public IActionResult Index()
         {
-            var patterns = patternService.GetPatterns();
-            return View(patterns);
+            return View();
         }
 
         public IActionResult AddPatternForm()
@@ -29,21 +22,17 @@ namespace Sewapp.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult AddPatternName(Pattern pattern)
         {
-            if (ModelState.IsValid)
-            {
-                patternService.AddPattern(pattern);
+            PatternService patternService = new PatternService();
+            Console.WriteLine($"Pattern Name: {pattern.Name}");
+            //Console.WriteLine($"Pattern Name: {pattern.Name}");
+            patternService.AddPattern(pattern);
+            ViewBag.PatternName = pattern.Name;
+            return View("Index");
 
-                ViewBag.PatternName = pattern.Name;
-
-                return View("Index");
-            }
-            else
-            {
-                return View("YourFormView", pattern);
-            }
         }
+
+        
     }
 }

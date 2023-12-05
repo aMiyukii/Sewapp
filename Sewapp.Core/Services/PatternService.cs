@@ -7,7 +7,7 @@ namespace Sewapp.Core.Services
     {
         public void AddPattern(Pattern newPattern)
         {
-            AddPattern(newPattern);
+            
         }
 
     

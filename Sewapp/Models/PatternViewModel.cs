@@ -1,8 +1,8 @@
 namespace Sewapp.Models
 {
-    public class AddPatternViewModel
+    public class PatternViewModel
     {
-        public string PatternName { get; set; }
+        public string Name { get; set; }
         public string Category { get; set; }   
     }
 }
