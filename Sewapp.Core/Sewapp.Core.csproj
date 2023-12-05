@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Sewapp.Data\Sewapp.Data.csproj" />
+  </ItemGroup>
+
 </Project>

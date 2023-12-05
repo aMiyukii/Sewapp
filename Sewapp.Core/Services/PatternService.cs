@@ -1,5 +1,6 @@
 ﻿using Sewapp.Core.Dto;
 using Sewapp.Core.Models;
+using Sewapp.Data;
 
 namespace Sewapp.Core.Services
 {
@@ -7,25 +8,28 @@ namespace Sewapp.Core.Services
     {
         public void AddPattern(Pattern newPattern)
         {
-            
+            PatternData patternData = new PatternData(newPattern.Name);
+            patternData.SendPatternToDatabase();
         }
 
-    
+        public List<Pattern> GetAllPatterns()
+        {
+            List<Pattern> patterns = new List<Pattern>();
 
-    ////creating patternDTO
-    //public PatternDTO createPatternDto(Pattern newPattern)
-    //    {
-    //        PatternDTO patternDto = new PatternDTO();
+            List<PatternData> patternDataList = PatternData.GetAllPatternsFromDatabase();
 
-    //        patternDto.Name = newPattern.Name;
-    //        //patternDto.Category = new List<CategoryDTO>();
+            foreach (var patternData in patternDataList)
+            {
+                Pattern pattern = new Pattern
+                {
+                    Id = patternData.Id,
+                    Name = patternData.Name,
+                };
 
-    //        //foreach (var category in newPattern.Category)
-    //        //{
-    //        //    CategoryDTO categoryDto = new CategoryDTO(category.Name);
-    //        //    patternDto.Category.Add(categoryDto);
-    //        //}
-    //        return patternDto;
-    //    }
+                patterns.Add(pattern);
+            }
+
+            return patterns;
+        }
     }
 }
