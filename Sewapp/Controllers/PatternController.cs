@@ -11,9 +11,17 @@ namespace Sewapp.Controllers
     public class PatternController : Controller
     {
 
+        private readonly PatternService patternService;
+
+        public PatternController()
+        {
+            patternService = new PatternService();
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var patterns = patternService.GetAllPatterns();
+            return View(patterns);
         }
 
         public IActionResult AddPatternForm()
@@ -24,15 +32,11 @@ namespace Sewapp.Controllers
         [HttpPost]
         public IActionResult AddPatternName(Pattern pattern)
         {
-            PatternService patternService = new PatternService();
             Console.WriteLine($"Pattern Name: {pattern.Name}");
-            //Console.WriteLine($"Pattern Name: {pattern.Name}");
             patternService.AddPattern(pattern);
             ViewBag.PatternName = pattern.Name;
-            return View("Index");
-
+            return RedirectToAction("Index");
         }
 
-        
     }
 }

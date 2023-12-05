@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Sewapp.Core.Models
+@model List<Pattern>
+
+@{
     ViewData["Title"] = "Pattern Library";
 }
 
@@ -30,12 +33,27 @@
             <button class="add-button">Add Pattern</button>
         }
 
+        @using (Html.BeginForm("AddPatternForm", "Pattern"))
+        {
+            <button class="add-category">Add Category</button>
+        }
+
     </div>
 
-    @if (ViewBag.PatternName != null)
-    {
-        <p class="Pattern-Information">Pattern Name: @ViewBag.PatternName</p>
-    }
+
+    <h2 class="Pattern-List">Pattern List</h2>
+    <ul>
+        @if (Model != null)
+        {
+            @foreach (var pattern in Model)
+            {
+                <li>@pattern.Name</li>
+            }
+        }
+    </ul>
+
+
+
 
 
   
