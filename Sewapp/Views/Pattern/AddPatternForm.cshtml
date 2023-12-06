@@ -1,18 +1,12 @@
 ﻿@using Sewapp.Core.Models
 @model Sewapp.Core.Models.Pattern
+@*@model List<Category>*@
 
-@{
     ViewData["Title"] = "Add Pattern";
 }
 
 <head>
     <link rel="stylesheet" href="/css/AddPattern.css">
-    <script>
-        function addPattern() {
-            const title = document.getElementById("pattern-name-input").textContent;
-
-            }
-    </script>
 </head>
 
 <body>
@@ -52,6 +46,16 @@
             <button type="submit" class="add-pattern-button">Add pattern</button>
         }
 
+          @*  <h2 class="Category-List">Category List</h2>
+            <ul>
+                @if (Model != null)
+                {
+                    @foreach (var category in Model)
+                    {
+                        <li>@category.Name</li>
+                    }
+                }
+            </ul>*@
 
 
 

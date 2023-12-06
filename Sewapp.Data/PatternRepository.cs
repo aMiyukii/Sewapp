@@ -13,10 +13,6 @@ namespace Sewapp.Data
         public string Name { get; set; }
         public string Category { get; set; }
 
-        public PatternRepository()
-        {
-        }
-
         public PatternRepository(string name)
         {
             Name = name;
