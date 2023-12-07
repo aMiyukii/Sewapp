@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileSystemGlobbing.Internal;
 using Sewapp.Core.Models;
 using Sewapp.Core.Services;
 using Sewapp.Models;
@@ -31,11 +32,11 @@ namespace Sewapp.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddPatternName(Pattern pattern)
+        public IActionResult AddPatternName(PatternViewModel patternViewModel)
         {
-            Console.WriteLine($"Pattern Name: {pattern.Name}");
+            var pattern = new Pattern { Name = patternViewModel.Name, };
+
             patternService.AddPattern(pattern);
-            ViewBag.PatternName = pattern.Name;
             return RedirectToAction("Index");
         }
 
@@ -47,13 +48,11 @@ namespace Sewapp.Controllers
         
 
         [HttpPost]
-        public IActionResult AddCategory(Category category)
+        public IActionResult AddCategory(CategoryViewModel categoryViewModel)
         {
-            Console.WriteLine($"Category Name: {category.Name}");
+            var category = new Category { Name = categoryViewModel.Name, };
 
             categoryService.AddCategory(category);
-
-            ViewBag.PatternName = category.Name;
             return RedirectToAction("Index");
         }
 

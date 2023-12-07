@@ -40,7 +40,6 @@ namespace Sewapp.Data
                     {
                         cmd.Parameters.AddWithValue("@Name", Name);
 
-                        // ExecuteScalar is used to retrieve the newly generated Id
                         Id = Convert.ToInt32(cmd.ExecuteScalar());
                         Console.WriteLine($"Pattern added with Id: {Id}");
                     }

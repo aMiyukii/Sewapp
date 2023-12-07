@@ -6,6 +6,11 @@ namespace Sewapp.Models
         public string Name { get; set; }
         public string Category { get; set; }   
 
+        public PatternViewModel()
+        {
+
+        }
+
         public PatternViewModel(string name)
         {
             Name = name;
