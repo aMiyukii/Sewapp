@@ -13,7 +13,7 @@ namespace Sewapp.Core.Services
         public void AddCategory(Category newCategory)
         {
             CategoryRepository categoryRepository = new CategoryRepository(newCategory.Name);
-            //categoryRepository.SendCategoryToDatabase();
+            categoryRepository.SendCategoryToDatabase();
         }
 
         public List<Category> GetAllCategories()
@@ -26,7 +26,7 @@ namespace Sewapp.Core.Services
             {
                 Category category = new Category
                 {
-                    Id = categoryRepository.Id,
+                    Id = categoryRepository.CategoryId,
                     Name = categoryRepository.Name,
                 };
 

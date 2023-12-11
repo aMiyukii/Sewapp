@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sewapp.Data
 {
@@ -11,17 +8,22 @@ namespace Sewapp.Data
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Category { get; set; }
+        public int CategoryId { get; set; }
 
-        public PatternRepository(string name)
+        private static int lastAssignedId = 0;
+
+
+        public PatternRepository(string name, int categoryId)
         {
             Name = name;
+            CategoryId = categoryId;
         }
 
-        public PatternRepository(int id, string name)
+        public PatternRepository(int id, string name, int categoryId)
         {
             Id = id;
             Name = name;
+            CategoryId = categoryId;
         }
 
         public void SendPatternToDatabase()
@@ -33,17 +35,28 @@ namespace Sewapp.Data
             {
                 using (SqlConnection connection = dbConnection.GetSqlConnection())
                 {
-                    string insertQuery = "INSERT INTO dbo.Pattern (Name) VALUES (@Name); SELECT SCOPE_IDENTITY() AS NewId;";
+                    if (Id == 0)
+                    {
+                        string getMaxIdQuery = "SELECT ISNULL(MAX(Id), 0) FROM dbo.pattern;";
+                        using (SqlCommand getMaxIdCmd = new SqlCommand(getMaxIdQuery, connection))
+                        {
+                            lastAssignedId = Convert.ToInt32(getMaxIdCmd.ExecuteScalar());
+                        }
 
+                        Id = ++lastAssignedId;
+                    }
+
+                    string insertQuery = "INSERT INTO dbo.pattern (Id, Name, CategoryId) VALUES (@Id, @Name, @CategoryId);";
 
                     using (SqlCommand cmd = new SqlCommand(insertQuery, connection))
                     {
+                        cmd.Parameters.AddWithValue("@Id", Id);
                         cmd.Parameters.AddWithValue("@Name", Name);
+                        cmd.Parameters.AddWithValue("@CategoryId", CategoryId);
 
-                        Id = Convert.ToInt32(cmd.ExecuteScalar());
+                        cmd.ExecuteNonQuery();
                         Console.WriteLine($"Pattern added with Id: {Id}");
                     }
-
                 }
             }
             catch (Exception ex)
@@ -57,10 +70,10 @@ namespace Sewapp.Data
         }
 
 
-        public static List<PatternRepository> GetAllPatternsFromDatabase()
+
+        public static List<PatternRepository> GetPatternsFromDatabase()
         {
             List<PatternRepository> patterns = new List<PatternRepository>();
-
             DatabaseConnection dbConnection = new DatabaseConnection();
             dbConnection.OpenConnection();
 
@@ -68,7 +81,7 @@ namespace Sewapp.Data
             {
                 using (SqlConnection connection = dbConnection.GetSqlConnection())
                 {
-                    string selectQuery = "SELECT Id, Name FROM dbo.Pattern";
+                    string selectQuery = "SELECT Id, Name, CategoryId FROM dbo.pattern";
 
                     using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
                     {
@@ -78,8 +91,9 @@ namespace Sewapp.Data
                             {
                                 int id = reader.GetInt32(reader.GetOrdinal("Id"));
                                 string name = reader.GetString(reader.GetOrdinal("Name"));
+                                int categoryId = reader.GetInt32(reader.GetOrdinal("CategoryId"));
 
-                                PatternRepository pattern = new PatternRepository(id, name);
+                                PatternRepository pattern = new PatternRepository(id, name, categoryId);
                                 patterns.Add(pattern);
                             }
                         }
@@ -97,6 +111,5 @@ namespace Sewapp.Data
 
             return patterns;
         }
-
     }
 }

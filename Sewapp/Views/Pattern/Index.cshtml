@@ -47,7 +47,11 @@
         {
             @foreach (var pattern in Model)
             {
-                <li>@pattern.Name</li>
+                <li>
+                    <strong>Pattern Name:</strong> @pattern.Name
+                    <br />
+                    <strong>Category:</strong> @pattern.Category?.Name
+                </li>
             }
         }
     </ul>

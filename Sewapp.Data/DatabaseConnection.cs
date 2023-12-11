@@ -16,10 +16,8 @@ namespace Sewapp.Data
         {
             try
             {
-                // Initialize the SqlConnection
-                connection = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;Database=master;");
+                connection = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;Database=SewApp;");
 
-                // Open the connection
                 connection.Open();
             }
             catch (Exception)
@@ -37,7 +35,6 @@ namespace Sewapp.Data
 
         public void CloseConnection()
         {
-            // Close the connection if it's open
             if (connection != null && connection.State == System.Data.ConnectionState.Open)
             {
                 connection.Close();

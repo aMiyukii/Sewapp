@@ -28,17 +28,28 @@ namespace Sewapp.Controllers
 
         public IActionResult AddPatternForm()
         {
-            return View();
+            var patternViewModel = new PatternViewModel
+            {
+                Categories = categoryService.GetAllCategories()
+            };
+
+            return View(patternViewModel);
         }
+
 
         [HttpPost]
         public IActionResult AddPatternName(PatternViewModel patternViewModel)
         {
-            var pattern = new Pattern { Name = patternViewModel.Name, };
+            var pattern = new Pattern
+            {
+                Name = patternViewModel.Name,
+                CategoryId = patternViewModel.CategoryId
+            };
 
             patternService.AddPattern(pattern);
             return RedirectToAction("Index");
         }
+
 
         public IActionResult AddCategoryForm()
         {
