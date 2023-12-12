@@ -40,21 +40,24 @@
 
     </div>
 
-
     <h2 class="Pattern-List">Pattern List</h2>
-    <ul>
-        @if (Model != null)
-        {
+    @if (Model != null && Model.Any())
+    {
+        <div>
             @foreach (var pattern in Model)
             {
-                <li>
-                    <strong>Pattern Name:</strong> @pattern.Name
-                    <br />
-                    <strong>Category:</strong> @pattern.Category?.Name
-                </li>
+                <div class="pattern-item">
+                    <strong>Pattern Name:</strong> @pattern.Name<br />
+                    <strong>Category:</strong> @(pattern.Category?.Name)<br /><br />
+                </div>
             }
-        }
-    </ul>
+        </div>
+    }
+    else
+    {
+        <p>No patterns available.</p>
+    }
+
 
 
 </body>

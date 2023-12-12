@@ -46,16 +46,23 @@ namespace Sewapp.Data
                         Id = ++lastAssignedId;
                     }
 
-                    string insertQuery = "INSERT INTO dbo.pattern (Id, Name, CategoryId) VALUES (@Id, @Name, @CategoryId);";
-
-                    using (SqlCommand cmd = new SqlCommand(insertQuery, connection))
+                    if (Name != null && CategoryId > 0)
                     {
-                        cmd.Parameters.AddWithValue("@Id", Id);
-                        cmd.Parameters.AddWithValue("@Name", Name);
-                        cmd.Parameters.AddWithValue("@CategoryId", CategoryId);
+                        string insertQuery = "INSERT INTO dbo.pattern (Id, Name, CategoryId) VALUES (@Id, @Name, @CategoryId);";
 
-                        cmd.ExecuteNonQuery();
-                        Console.WriteLine($"Pattern added with Id: {Id}");
+                        using (SqlCommand cmd = new SqlCommand(insertQuery, connection))
+                        {
+                            cmd.Parameters.AddWithValue("@Id", Id);
+                            cmd.Parameters.AddWithValue("@Name", Name);
+                            cmd.Parameters.AddWithValue("@CategoryId", CategoryId);
+
+                            cmd.ExecuteNonQuery();
+                            Console.WriteLine($"Pattern added with Id: {Id}");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error: Name or CategoryId is null.");
                     }
                 }
             }
@@ -68,8 +75,6 @@ namespace Sewapp.Data
                 dbConnection.CloseConnection();
             }
         }
-
-
 
         public static List<PatternRepository> GetPatternsFromDatabase()
         {
@@ -89,9 +94,9 @@ namespace Sewapp.Data
                         {
                             while (reader.Read())
                             {
-                                int id = reader.GetInt32(reader.GetOrdinal("Id"));
-                                string name = reader.GetString(reader.GetOrdinal("Name"));
-                                int categoryId = reader.GetInt32(reader.GetOrdinal("CategoryId"));
+                                int id = reader.IsDBNull(reader.GetOrdinal("Id")) ? 0 : reader.GetInt32(reader.GetOrdinal("Id"));
+                                string name = reader.IsDBNull(reader.GetOrdinal("Name")) ? null : reader.GetString(reader.GetOrdinal("Name"));
+                                int categoryId = reader.IsDBNull(reader.GetOrdinal("CategoryId")) ? 0 : reader.GetInt32(reader.GetOrdinal("CategoryId"));
 
                                 PatternRepository pattern = new PatternRepository(id, name, categoryId);
                                 patterns.Add(pattern);
@@ -102,7 +107,7 @@ namespace Sewapp.Data
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
+                Console.WriteLine("Error fetching patterns from the database: " + ex.Message);
             }
             finally
             {
@@ -111,5 +116,6 @@ namespace Sewapp.Data
 
             return patterns;
         }
+
     }
 }

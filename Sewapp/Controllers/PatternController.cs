@@ -23,8 +23,10 @@ namespace Sewapp.Controllers
         public IActionResult Index()
         {
             var patterns = patternService.GetAllPatterns();
+            Console.WriteLine($"Number of patterns retrieved: {patterns.Count}");
             return View(patterns);
         }
+
 
         public IActionResult AddPatternForm()
         {
@@ -47,8 +49,11 @@ namespace Sewapp.Controllers
             };
 
             patternService.AddPattern(pattern);
-            return RedirectToAction("Index");
+            var patterns = patternService.GetAllPatterns();
+
+            return View("Index", patterns);
         }
+
 
 
         public IActionResult AddCategoryForm()

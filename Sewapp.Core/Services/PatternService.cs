@@ -19,7 +19,6 @@ namespace Sewapp.Core.Services
 
             List<PatternRepository> patternDataList = PatternRepository.GetPatternsFromDatabase();
 
-
             foreach (var patternData in patternDataList)
             {
                 Pattern pattern = new Pattern
@@ -35,7 +34,8 @@ namespace Sewapp.Core.Services
             }
 
             return patterns;
-        } 
+        }
+
 
         private Category GetCategoryById(int categoryId)
         {
