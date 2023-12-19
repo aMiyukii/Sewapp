@@ -1,10 +1,10 @@
-﻿using Sewapp.Core.Dto;
+﻿using Sewapp.Core.Interfaces;
 using Sewapp.Core.Models;
 using Sewapp.Data;
 
 namespace Sewapp.Core.Services
 {
-    public class PatternService
+    public class PatternService : IPatternRepository
     {
 
         public void AddPattern(Pattern newPattern)

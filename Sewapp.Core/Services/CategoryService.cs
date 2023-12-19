@@ -1,4 +1,5 @@
-﻿using Sewapp.Core.Models;
+﻿using Sewapp.Core.Interfaces;
+using Sewapp.Core.Models;
 using Sewapp.Data;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Sewapp.Core.Services
 {
-    public class CategoryService
+    public class CategoryService : ICategoryRepository
     {
         public void AddCategory(Category newCategory)
         {
