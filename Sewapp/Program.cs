@@ -15,21 +15,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-// SQL connection
-//using (SqlConnection connection = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;Database=master;"))
-//{
-//    try
-//    {
-//        connection.Open();
-//    }
-//    catch (Exception)
-//    {
-//        throw new InvalidOperationException("Connection not working");
-//    }
-
-//    connection.Close();
-//}
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
